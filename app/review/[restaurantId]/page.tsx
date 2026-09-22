@@ -11,7 +11,7 @@ function Star({ filled, onClick, label }: { filled: boolean; onClick: () => void
       aria-label={label}
       aria-pressed={filled}
       className={`p-1 transition-colors ${
-        filled ? "text-amber-600" : "text-neutral-300 hover:text-neutral-400"
+        filled ? "text-[#E23744]" : "text-neutral-200 hover:text-neutral-300"
       }`}
     >
       <svg viewBox="0 0 24 24" className="h-9 w-9 fill-current" aria-hidden="true">
@@ -75,7 +75,7 @@ export default function ReviewPage() {
 
   if (notFound) {
     return (
-      <main className="min-h-screen bg-[#FAF9F7]">
+      <main className="min-h-screen bg-white">
         <div className="mx-auto w-full max-w-[560px] px-6 py-12">
           <h1 className="text-2xl font-semibold text-neutral-900">Restaurant not found</h1>
         </div>
@@ -85,7 +85,7 @@ export default function ReviewPage() {
 
   if (!restaurantName) {
     return (
-      <main className="min-h-screen bg-[#FAF9F7]">
+      <main className="min-h-screen bg-white">
         <div className="mx-auto w-full max-w-[560px] px-6 py-12">
           <p className="text-neutral-500">Loading…</p>
         </div>
@@ -96,7 +96,7 @@ export default function ReviewPage() {
   const submitDisabled = rating === null || comment.trim() === "" || submitting;
 
   return (
-    <main className="min-h-screen bg-[#FAF9F7]">
+    <main className="min-h-screen bg-white">
       <div className="mx-auto w-full max-w-[560px] px-6 py-12">
         <h1 className="text-2xl font-semibold text-neutral-900">{restaurantName}</h1>
         <p className="mt-1 text-sm text-neutral-600">Write a review</p>
@@ -125,7 +125,7 @@ export default function ReviewPage() {
             onChange={(e) => setComment(e.target.value)}
             rows={4}
             placeholder="How was it?"
-            className="mt-2 w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-neutral-900 placeholder:text-neutral-400 focus:border-amber-600 focus:outline-none"
+            className="mt-2 w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-neutral-900 placeholder:text-neutral-400 focus:border-[#E23744] focus:outline-none"
           />
         </div>
 
@@ -135,7 +135,7 @@ export default function ReviewPage() {
           type="button"
           onClick={handleSubmit}
           disabled={submitDisabled}
-          className="mt-8 w-full rounded-xl bg-neutral-900 px-4 py-3 font-medium text-white transition-colors hover:bg-neutral-700 disabled:cursor-not-allowed disabled:bg-neutral-300"
+          className="mt-8 w-full rounded-xl bg-[#E23744] px-4 py-3 font-medium text-white transition-colors hover:bg-[#c92a36] disabled:cursor-not-allowed disabled:bg-neutral-200"
         >
           {submitting ? "Submitting…" : "Submit review"}
         </button>
