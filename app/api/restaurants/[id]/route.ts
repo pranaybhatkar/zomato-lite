@@ -7,7 +7,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
 
   // The restaurant itself. If it doesn't exist, 404.
   const restaurants = await sql.query(
-    'SELECT name, cuisine, area FROM restaurants WHERE id = $1',
+    'SELECT name, cuisine, area, photo_url FROM restaurants WHERE id = $1',
     [id]
   );
   if (restaurants.length === 0) {
@@ -54,6 +54,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
     name: restaurant.name,
     cuisine: restaurant.cuisine,
     area: restaurant.area,
+    photoUrl: restaurant.photo_url ?? null,
     averageRating: average,
     totalReviews: total,
     latestReview: latest,

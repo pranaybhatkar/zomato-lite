@@ -6,12 +6,12 @@ INSERT INTO restaurants (name, cuisine, area)
 SELECT 'Bombay Sandwich Co.', 'Indian', 'Bandra, Mumbai'
 WHERE NOT EXISTS (SELECT 1 FROM restaurants WHERE name = 'Bombay Sandwich Co.');
 
-INSERT INTO restaurants (name, cuisine, area)
-SELECT 'Ludhiana Burrito', 'Indian', 'Sector 32, Delhi'
+INSERT INTO restaurants (name, cuisine, area, photo_url)
+SELECT 'Ludhiana Burrito', 'Indian', 'Sector 32, Delhi', 'https://images.unsplash.com/photo-1731090389603-d63060ee08a6?w=1200&q=80&auto=format&fit=crop'
 WHERE NOT EXISTS (SELECT 1 FROM restaurants WHERE name = 'Ludhiana Burrito');
 
-INSERT INTO restaurants (name, cuisine, area)
-SELECT 'Kong City', 'Chinese', 'CST, Mumbai'
+INSERT INTO restaurants (name, cuisine, area, photo_url)
+SELECT 'Kong City', 'Chinese', 'CST, Mumbai', 'https://images.unsplash.com/photo-1750602920132-2146f0345e21?w=1200&q=80&auto=format&fit=crop'
 WHERE NOT EXISTS (SELECT 1 FROM restaurants WHERE name = 'Kong City');
 
 -- Reviews: Bombay Sandwich Co.
@@ -61,3 +61,14 @@ INSERT INTO reviews (restaurant_id, rating, comment, created_at)
 SELECT r.id, 3, 'Food is good but the service was slow on a busy Saturday', NOW() - INTERVAL '1 day'
 FROM restaurants r WHERE r.name = 'Kong City'
   AND NOT EXISTS (SELECT 1 FROM reviews WHERE comment = 'Food is good but the service was slow on a busy Saturday');
+
+-- Fill photo_url on databases where those two restaurants already existed
+-- (the guarded INSERTs above skip them). Running again is harmless: they
+-- already have the same URL.
+UPDATE restaurants
+SET photo_url = 'https://images.unsplash.com/photo-1731090389603-d63060ee08a6?w=1200&q=80&auto=format&fit=crop'
+WHERE name = 'Ludhiana Burrito';
+
+UPDATE restaurants
+SET photo_url = 'https://images.unsplash.com/photo-1750602920132-2146f0345e21?w=1200&q=80&auto=format&fit=crop'
+WHERE name = 'Kong City';

@@ -16,6 +16,7 @@ type Restaurant = {
   name: string;
   cuisine: string;
   area: string;
+  photoUrl: string | null;
   averageRating: number | null;
   totalReviews: number;
   latestReview: Review | null;
@@ -98,14 +99,19 @@ export default function RestaurantPage() {
   const hasReviews = data.totalReviews > 0;
   const latest = data.latestReview;
   const older = data.reviews;
+  // The backend owns each restaurant's photo. If it sent none, fall back to
+  // the default sandwich photo (that's what Bombay Sandwich Co. keeps).
+  const heroImage =
+    data.photoUrl ??
+    "https://images.unsplash.com/photo-1693892863405-109f80ddb9df?w=1200&q=80&auto=format&fit=crop";
 
   return (
     <main className="min-h-screen bg-white">
       <div className="mx-auto w-full max-w-[560px] px-6 py-8">
         <div className="relative h-56 w-full overflow-hidden rounded-2xl">
           <Image
-            src="https://images.unsplash.com/photo-1693892863405-109f80ddb9df?w=1200&q=80&auto=format&fit=crop"
-            alt="A sandwich cut in half on a plate"
+            src={heroImage}
+            alt={`${data.name}`}
             fill
             priority
             sizes="(max-width: 560px) 100vw, 560px"
