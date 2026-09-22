@@ -1,9 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
-type Restaurant = { id: number; name: string; cuisine: string; area: string };
+type Restaurant = {
+  id: number;
+  name: string;
+  cuisine: string;
+  area: string;
+  photoUrl: string | null;
+};
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState<Restaurant[] | null>(null);
@@ -48,11 +55,25 @@ export default function Home() {
               <li key={r.id}>
                 <Link
                   href={`/restaurant/${r.id}`}
-                  className="flex items-center justify-between gap-4 rounded-2xl border border-neutral-200 bg-white p-5 transition-colors hover:border-[#E23744]"
+                  className="flex items-center gap-4 rounded-2xl border border-neutral-200 bg-white p-4 transition-colors hover:border-[#E23744]"
                 >
-                  <div>
-                    <p className="text-lg font-semibold text-neutral-900">{r.name}</p>
-                    <p className="mt-1 text-sm text-neutral-600">
+                  {r.photoUrl ? (
+                    <Image
+                      src={r.photoUrl}
+                      alt={r.name}
+                      width={64}
+                      height={64}
+                      className="h-16 w-16 shrink-0 rounded-xl object-cover"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="h-16 w-16 shrink-0 rounded-xl bg-neutral-200"
+                    />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-lg font-semibold text-neutral-900">{r.name}</p>
+                    <p className="mt-0.5 truncate text-sm text-neutral-600">
                       {r.cuisine} · {r.area}
                     </p>
                   </div>
