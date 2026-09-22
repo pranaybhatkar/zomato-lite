@@ -103,7 +103,7 @@ export default function RestaurantPage() {
   // the default sandwich photo (that's what Bombay Sandwich Co. keeps).
   const heroImage =
     data.photoUrl ??
-    "https://images.unsplash.com/photo-1693892863405-109f80ddb9df?w=1200&q=80&auto=format&fit=crop";
+    "https://images.unsplash.com/photo-1655279562015-047c3da9a271?w=1200&q=80&auto=format&fit=crop";
 
   return (
     <main className="min-h-screen bg-white">

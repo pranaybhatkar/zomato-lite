@@ -3,7 +3,7 @@
 
 -- Restaurants.
 INSERT INTO restaurants (name, cuisine, area, photo_url)
-SELECT 'Bombay Sandwich Co.', 'Indian', 'Bandra, Mumbai', 'https://images.unsplash.com/photo-1693892863405-109f80ddb9df?w=1200&q=80&auto=format&fit=crop'
+SELECT 'Bombay Sandwich Co.', 'Indian', 'Bandra, Mumbai', 'https://images.unsplash.com/photo-1655279562015-047c3da9a271?w=1200&q=80&auto=format&fit=crop'
 WHERE NOT EXISTS (SELECT 1 FROM restaurants WHERE name = 'Bombay Sandwich Co.');
 
 INSERT INTO restaurants (name, cuisine, area, photo_url)
@@ -66,7 +66,7 @@ FROM restaurants r WHERE r.name = 'Kong City'
 -- (the guarded INSERTs above skip them). Running again is harmless: they
 -- already have the same URL.
 UPDATE restaurants
-SET photo_url = 'https://images.unsplash.com/photo-1693892863405-109f80ddb9df?w=1200&q=80&auto=format&fit=crop'
+SET photo_url = 'https://images.unsplash.com/photo-1655279562015-047c3da9a271?w=1200&q=80&auto=format&fit=crop'
 WHERE name = 'Bombay Sandwich Co.';
 
 UPDATE restaurants
