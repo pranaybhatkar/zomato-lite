@@ -104,8 +104,8 @@ export default function RestaurantPage() {
       <div className="mx-auto w-full max-w-[560px] px-6 py-8">
         <div className="relative h-56 w-full overflow-hidden rounded-2xl">
           <Image
-            src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=1200&q=80"
-            alt="A sandwich"
+            src="https://plus.unsplash.com/premium_photo-1726783342297-810bf4f1f5be?w=1200&q=80&auto=format&fit=crop"
+            alt="A prosciutto sandwich on sourdough bread"
             fill
             priority
             sizes="(max-width: 560px) 100vw, 560px"
