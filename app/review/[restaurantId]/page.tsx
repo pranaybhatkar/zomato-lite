@@ -115,12 +115,23 @@ export default function ReviewPage() {
   return (
     <main className="min-h-screen bg-[#FAF9F7]">
       <div className="mx-auto w-full max-w-[560px] px-6 py-8">
-        <Link
-          href={`/restaurant/${restaurantId}`}
-          className="text-sm text-neutral-600 transition-colors hover:text-[#E23744]"
-        >
-          ‹ Back to {restaurantName}
-        </Link>
+        <div className="flex items-center justify-between gap-3">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:border-[#E23744] hover:text-[#E23744]"
+          >
+            <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+              <path d="M12 3l9 7h-2v10h-5v-6h-4v6H5V10H3z" />
+            </svg>
+            Home
+          </Link>
+          <Link
+            href={`/restaurant/${restaurantId}`}
+            className="text-sm text-neutral-600 transition-colors hover:text-[#E23744]"
+          >
+            ‹ Back to {restaurantName}
+          </Link>
+        </div>
 
         {restaurantPhoto && (
           <div className="relative mt-4 h-40 w-full overflow-hidden rounded-2xl">

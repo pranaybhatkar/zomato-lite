@@ -11,7 +11,7 @@ SELECT 'Ludhiana Burrito', 'Indian', 'Sector 32, Delhi', 'https://images.unsplas
 WHERE NOT EXISTS (SELECT 1 FROM restaurants WHERE name = 'Ludhiana Burrito');
 
 INSERT INTO restaurants (name, cuisine, area, photo_url)
-SELECT 'Kong City', 'Chinese', 'CST, Mumbai', 'https://images.unsplash.com/photo-1757445060049-0531425f8643?w=1200&q=80&auto=format&fit=crop'
+SELECT 'Kong City', 'Chinese', 'CST, Mumbai', 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=1200&q=80&auto=format&fit=crop'
 WHERE NOT EXISTS (SELECT 1 FROM restaurants WHERE name = 'Kong City');
 
 -- Reviews: Bombay Sandwich Co.
@@ -74,5 +74,5 @@ SET photo_url = 'https://images.unsplash.com/photo-1731090389603-d63060ee08a6?w=
 WHERE name = 'Ludhiana Burrito';
 
 UPDATE restaurants
-SET photo_url = 'https://images.unsplash.com/photo-1757445060049-0531425f8643?w=1200&q=80&auto=format&fit=crop'
+SET photo_url = 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=1200&q=80&auto=format&fit=crop'
 WHERE name = 'Kong City';
