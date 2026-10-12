@@ -57,9 +57,9 @@ Everything that matters is a fact in the database — **including each restauran
 
 ## Architecture
 
-A high-level runtime architecture diagram — the browser client, the Next.js API routes on Vercel, the Neon Postgres database, the Unsplash image path, and the trust boundaries between them — lives at [`docs/zomato-lite-architecture.html`](docs/zomato-lite-architecture.html).
+![High-level runtime architecture of Zomato lite: the browser client, the Next.js API routes on Vercel, the Neon Postgres database, and the Unsplash image path, with the trust boundaries between them.](docs/zomato-lite-architecture.png)
 
-> **View it rendered:** https://pranaybhatkar.github.io/zomato-lite/
+The full interactive diagram — theme toggle, pan/zoom, and PNG/SVG export — is the self-contained [`docs/zomato-lite-architecture.html`](docs/zomato-lite-architecture.html). Download it and open it in any browser; it needs no server or build.
 
 What it shows:
 
@@ -87,6 +87,7 @@ db/
   setup.mjs                    # Applies schema and seed
 docs/
   zomato-lite-architecture.html # High-level runtime architecture diagram (self-contained)
+  zomato-lite-architecture.png  # Static preview of the diagram (embedded in this README)
   index.html                    # Redirect to the diagram (for GitHub Pages)
 ```
 
