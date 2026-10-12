@@ -55,6 +55,21 @@ Everything that matters is a fact in the database — **including each restauran
 - The seed is **idempotent** — running it repeatedly never duplicates rows, so live user reviews are never wiped.
 - Only the Unsplash image host is whitelisted in `next.config.ts` (a deliberate remote-image security choice).
 
+## Architecture
+
+A high-level runtime architecture diagram — the browser client, the Next.js API routes on Vercel, the Neon Postgres database, the Unsplash image path, and the trust boundaries between them — lives at [`docs/zomato-lite-architecture.html`](docs/zomato-lite-architecture.html).
+
+> **View it rendered:** https://pranaybhatkar.github.io/zomato-lite/
+
+What it shows:
+
+- **10 core components** across three tiers: the three client screens (browser), the four server units on Vercel (three API routes + the Next.js image optimizer), and Neon Postgres — plus the User and Unsplash as outside actors.
+- **One primary path** — writing a review: User → Homepage → Restaurant page → Review form → `POST /api/reviews` → Neon Postgres.
+- **Four trust boundaries** — the untrusted browser, the trusted Vercel runtime, the third-party Neon database, and the third-party Unsplash CDN.
+- **External dependencies** — Neon Postgres and the Unsplash image CDN, with the `next.config.ts` host whitelist called out.
+
+Every component in the diagram is cited back to the exact file and line it comes from, at the pinned commit `c7deae5`.
+
 ## Project structure
 
 ```
@@ -70,6 +85,9 @@ db/
   schema.sql                   # Table definitions (safe to re-run)
   seed.sql                     # Guarded, idempotent restaurant + review seed
   setup.mjs                    # Applies schema and seed
+docs/
+  zomato-lite-architecture.html # High-level runtime architecture diagram (self-contained)
+  index.html                    # Redirect to the diagram (for GitHub Pages)
 ```
 
 ## Run it locally
