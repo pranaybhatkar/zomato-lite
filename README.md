@@ -59,6 +59,8 @@ Everything that matters is a fact in the database — **including each restauran
 
 ![High-level runtime architecture of Zomato lite: the browser client, the Next.js API routes on Vercel, the Neon Postgres database, and the Unsplash image path, with the trust boundaries between them.](docs/zomato-lite-architecture.png)
 
+**Live:** https://pranaybhatkar.github.io/zomato-lite/
+
 The full interactive diagram — theme toggle, pan/zoom, and PNG/SVG export — is the self-contained [`docs/zomato-lite-architecture.html`](docs/zomato-lite-architecture.html). Download it and open it in any browser; it needs no server or build.
 
 What it shows:
